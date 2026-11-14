@@ -8,7 +8,10 @@ A Claude skill for designing website and app interfaces in the Swiss / Internati
 - Builds on a grid derived from the type (after Müller-Brockmann's *Grid Systems*).
 - Composes asymmetric, flush-start layouts with type as the main image.
 - Adds a "poster layer" of signature moves drawn from Keller, Ballmer, Müller-Brockmann, Hofmann, the Basel object poster and Matter's photomontage.
-- Uses few colors at full strength, as flat planes, with contrast rules checked against WCAG.
+- Chooses a **Look** before the layout (ground, color scheme, picture treatment): five systems sampled from real posters, with the ground covering most of the first screen, not a cream page with an accent.
+- Uses full-strength flat color as planes, with every text/background pair checked against WCAG.
+- Ships tested CSS for the poster techniques: equal-width lockups, color bands, halftone and duotone pictures, overprint, module stacks.
+- Measures the color power of a screenshot (`scripts/color_power.py`).
 - Reviews the result against a checklist of common AI-template tells.
 - Supports Arabic (RTL) and English interfaces.
 
@@ -16,9 +19,13 @@ A Claude skill for designing website and app interfaces in the Swiss / Internati
 
 ```
 swiss-ui-design/
-├── SKILL.md    # the skill: workflow, grid/type/color, Arabic & RTL, components, review checklist, sources
+├── SKILL.md                 # the skill: workflow, grid/type/color, Arabic & RTL, components, review checklist, sources
 ├── README.md
-└── evals/      # test cases for checking the skill after each change
+├── references/
+│   └── looks.md             # five Looks (ground, palette, contrast pairs), the posters' measured anatomy, tested CSS
+├── scripts/
+│   └── color_power.py       # share of the first viewport that is strong flat color or ink (needs Pillow)
+└── evals/                   # test cases for checking the skill after each change
     ├── arabic-coworking-landing/     # Arabic RTL landing page (prompt in Arabic)
     └── english-roastery-dashboard/   # English orders dashboard
 ```

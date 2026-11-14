@@ -1,4 +1,4 @@
 schema_version: "1.1"
 name: english-roastery-dashboard
 expected_outcome: |
-  A single-file English dashboard on a 12-column grid with stat strip, rule-based tables, flush-left type hierarchy, few strong flat colors with one meaning each, one poster moment, and none of the generic AI dashboard tells (gradient cards, rounded tiles, emoji icons).
+  A single-file English dashboard on a 12-column grid with stat strip, rule-based tables, flush-left type hierarchy, a strong ground in the header or navigation, one color scheme with one meaning per hue, one poster moment, and none of the generic AI dashboard tells (gradient cards, rounded tiles, emoji icons).

@@ -1,13 +1,15 @@
 ---
 name: swiss-ui-design
-description: Design website and app interfaces in the Swiss / International Typographic Style — modular grid, asymmetric flush-start layouts, sans-serif type as the main image, few bold flat colors, active white space and real content — so the result reads as the work of a disciplined human designer, not a generic AI template. Use whenever the user wants to design, build, mock up, restyle or critique a landing page, website, web app, dashboard, mobile app screen or UI component and mentions Swiss style, Swiss school, International Typographic Style, grid-based, modernist, editorial, minimal, Müller-Brockmann or a Helvetica look — or asks for a UI that doesn't look AI-made. Handles Arabic (RTL) and English.
+description: Design website and app interfaces in the Swiss / International Typographic Style — modular grid, asymmetric flush-start layouts, sans-serif type as the main image, bold flat color planes, active white space and real content — so the result reads as the work of a disciplined human designer, not a generic AI template. Use whenever the user wants to design, build, mock up, restyle or critique a landing page, website, web app, dashboard, mobile app screen or UI component and mentions Swiss style, Swiss school, International Typographic Style, grid-based, modernist, editorial, minimal, Müller-Brockmann or a Helvetica look — or asks for a UI that doesn't look AI-made, or wants stronger color, a bolder or more poster-like design (full-bleed color, giant type). Handles Arabic (RTL) and English.
 ---
 
 # Swiss UI Design
 
-This skill turns the principles of the Swiss school into concrete UI decisions. The school's founding idea, from Ernst Keller, is that **the design solution must come out of the content of the problem**. Everything below follows from that: the grid is the logic, type is the image, color is a few strong planes with clear jobs, white space is structure, and nothing is decoration.
+This skill turns the principles of the Swiss school into concrete UI decisions. The school's founding idea, from Ernst Keller, is that **the design solution must come out of the content of the problem**. Everything below follows from that: the grid is the logic, type is the image, color is strong flat planes with clear jobs, white space is structure, and nothing is decoration.
 
 The second goal: the result **must not look AI-generated**. Generic AI interfaces share one look (centered hero, purple gradient, rounded cards with soft shadows, three icon features, vague copy). The Swiss style is close to the opposite of that look, so applying it with discipline solves most of the problem; Part 5 handles the rest.
+
+The third goal: **the result must have power.** A tidy page with a cream background and one orange block is Swiss only in its grid. The posters this style is known for are *covered* in color: strong flat color or black fills 83–97% of the sheet, or one chromatic ink carries everything and a tinted panel fills the rest. So Step 4 chooses a **Look** (ground, color scheme, picture treatment) before any layout. `references/looks.md` holds five Looks sampled from real posters, with tested CSS; `scripts/color_power.py` measures the result.
 
 **How this file is organized**
 1. Workflow — the steps, in order
@@ -16,6 +18,8 @@ The second goal: the result **must not look AI-generated**. Generic AI interface
 4. Components
 5. Not looking AI-made — the review checklist
 6. Source: the Swiss school in brief (from the booklet *The Swiss School of Design*)
+
+Also in this skill: `references/looks.md` (Looks, contrast pairs, tested CSS mechanics) and `scripts/color_power.py` (color-power check for screenshots).
 
 ---
 
@@ -46,6 +50,8 @@ Background that helps the choice: the Swiss National Library describes two post-
 
 Zurich is the "safe" choice and it is easy to fall into it every time; that makes every output look alike. Choose Zurich when the content is dense and functional. For landing pages, brands and campaigns, prefer Ballmer, Keller or Basel — they give the page **one strong moment** (a full field of strong color, a giant cropped word, a high-contrast shape) that a quiet page lacks. Tell the user in one line which direction you chose and why. Don't write it inside the interface.
 
+Direction and Look are separate choices. The direction decides the structure; the Look (Step 4) decides the color. A Zurich grid can wear the Sun Look, and Ballmer can wear Black + spectrum.
+
 ## 3. Find the concept in the content
 
 The Basel school put it this way (Kenneth Hiebert, a Hofmann student): an abstract structure is the vehicle for communication, and finding it forces you to **isolate the essence of the message** before any surface style. Do this in writing before you design:
@@ -56,9 +62,21 @@ The Basel school put it this way (Kenneth Hiebert, a Hofmann student): an abstra
 
 **The giant element must come from content, not from a call to action.** A giant imperative verb ("Book", "Start", or their Arabic equivalents) is a gimmick: it fits any product and quickly becomes the new template. Use a noun, number or name that only this product has: the place, the key figure, the object, the date.
 
-## 4. Set the system before the layout
+## 4. Choose the Look, then set the system
 
-Fix the tokens in Part 2 first: the body line (size and line height), a grid derived from it (12/8/4 columns by default, or another number if the content calls for it), baseline unit (8px), one type family (or one Arabic + one Latin partner) with a steep scale, and color (paper, ink and 1–3 strong flat colors with assigned jobs, plus a grey ramp; see Color in Part 2).
+**Look first.** Before any layout, choose a Look and open `references/looks.md` for its tokens, type pairs, composition and tested CSS. The ground comes first: strong flat color or ink covers at least 60% of the first screen. The two paper-ground Looks are the exception: one chromatic ink carries all the type and a tinted panel fills at least 30%. Choose from the content, never use the same Look twice in a row, and use one Look per page (sections vary the composition, not the palette).
+
+| Look | Ground | Palette | Fits |
+|---|---|---|---|
+| 1 Sun | one strong hue and its complement | yellow `#FFC611` · indigo `#3A3A9C` · navy `#16154A` | landing pages, events, culture, education |
+| 2 Violet ink | white; one chromatic ink for all type | violet `#4F2A7D` · periwinkle `#CFDBF1` · orchid `#BD9CBB` | editorial, journals, reports |
+| 3 Primary bands | 3–4 stacked full-bleed bands | blue `#2F7BFF` · green `#0FA23A` · yellow `#EFB83E` · red `#E6040A` · ink | fact-driven landing pages, campaigns, institutions |
+| 4 Black + spectrum | ink black | 6–9 pure hues, each at least twice | catalogs, booking, product families, dashboard legends |
+| 5 Gig poster | cream or black | ink + red, cyan, yellow, purple, with overprint | events, music, community, launches |
+
+Orange + navy, cobalt + yellow, pink + deep green and other grounds are in the same file. If the brief names a brand color, it becomes the ground or a plane, and the partners are chosen by the scheme.
+
+**Then the tokens** (Part 2): the body line (size and line height), a grid derived from it (12/8/4 columns by default, or another number if the content calls for it), baseline unit (8px), one type family (or one Arabic + one Latin partner) with a steep scale, and the Look's palette with one text color per surface, each pair checked for contrast.
 
 ## 5. Compose with asymmetry
 
@@ -96,11 +114,20 @@ The sources say the same thing from two sides. A study of flat design (Aristova 
 | 12 | **Photomontage** (Matter) | Two or three photographs at very different scales (a detail huge, a wide view small) cut to grid fields, with type placed over or between them. | grid fields with `overflow: clip`, images aligned to field edges |
 | 13 | **Confrontation** (Hofmann) | Two unlike elements meet on purpose: a letter against a geometric form, a dense text block against an empty field, a round shape against a straight grid, black against white. | two grid areas sharing an edge or overlapping by one field |
 | 14 | **Programme** (Gerstner) | One rule generates variations: e.g. every item in a list uses the same grid, but its number, image or color field sits in a position computed from its data (index, size, date). | CSS variables per item, `grid-column` set from data |
+| 15 | **Equal-width lockup** | 2–4 short lines of facts, each sized to the full measure so they form one block of unequal sizes; heavy, tracking −0.05 to −0.07em, lines nearly touching (leave room for descenders). | script sets each line's `font-size` (looks.md M1) |
+| 16 | **Color bands** | Sections as full-bleed bands of different hues, touching, each holding one fitted line; the band's height follows the word. | grid rows `auto`, one background per band |
+| 17 | **Module stack** | The product's own object drawn as one flat shape, repeated in 6–9 hues, interlocking in staggered columns, touching, orientation alternating. One hue = one meaning. | square blocks, `border-radius` cutouts (looks.md M6) |
+| 18 | **Duotone / halftone picture** | A photo or shape reduced to two palette colors, or to ink dots on the ground; cut by two edges, with one diagonal edge. | SVG filter + blend modes (looks.md M3, M4) |
+| 19 | **Masthead over panel** | A giant lowercase word in the one chromatic ink crosses the top edge of an inset tinted panel; cover lines and a colophon strip in the same ink. | overlapping grid rows (looks.md M7) |
+| 20 | **Repetition and overprint** | One word or shape repeated 3–5 times, alternating colors; where two planes overlap, the overlap is a third color. | `mix-blend-mode: multiply` |
+| 21 | **Diagonal plane** | A color field whose edge runs on a diagonal; one diagonal moves the eye across an orthogonal grid. | `clip-path: polygon()` |
 
 Guidelines for the moves:
 - **Commit to them.** A half-size version looks like a mistake. If the word is giant, make it truly giant.
 - **Make them carry content.** The giant word should be the product's name, the key number, the place or the object, never a generic verb or decoration. Keller: the design comes from the content.
-- **Vary them across sections**, and choose them to fit the direction (Ballmer → 1, 6, 8; Keller → 2, 7; Hofmann → 3, 5, 10, 13; Zurich → 4, 8, 9, 14; Basel object poster → 11; Matter → 12).
+- **Vary them across sections**, and choose them to fit the direction (Ballmer → 1, 6, 8; Keller → 2, 7; Hofmann → 3, 5, 10, 13; Zurich → 4, 8, 9, 14; Basel object poster → 11; Matter → 12) and the Look (Sun → 2, 18, 21; Violet ink → 19, 6; Primary bands → 15, 16; Black + spectrum → 17, 6; Gig poster → 20, 21, 5).
+- **Whisper and shout.** Pair the giant element with 12px metadata, never with a medium size. The studied posters have nothing in between.
+- **Finishing details** (pick two or three, never all): an em dash after titles and labels (`Floor 4—`); a stamp such as a Roman-numeral year or an issue number; two or three columns of metadata on offset spans; a colophon strip at the bottom; crop marks; grain on flat fields; one tiny rotated paragraph at the edge. In bilingual titles use a slash pair (`Ebb/ جزر`).
 - **Don't reach for the same combination every time.** The table is a vocabulary, not a recipe. A giant cropped word plus a red section plus a vertical word is already turning into a formula. Pick the moves the concept from step 3 asks for. If the concept is a timetable, the grid itself (8) may be the whole hero. If it is an object, the photograph (11) is.
 - **Keep it accessible.** The real text stays as real text: the giant word is the actual `<h1>`, or a decorative duplicate is `aria-hidden` while the real heading remains. Rotated text is short. Contrast stays at AA.
 - **Arabic is an advantage here.** Arabic letterforms are strong shapes. Heavy Kufi weights, cropped words, interlocking word blocks and square-Kufic wordmarks give a look that Latin-template designs can't have.
@@ -122,20 +149,20 @@ From the International Style in architecture, which the booklet names as the sty
 
 From Hofmann's *Graphic Design Manual*, the basic elements are **the dot, the line, and form**, plus **confrontation** (deliberate meetings of unlike elements, such as form and lettering). When a page needs a graphic element, build it from these before reaching for icons or illustration.
 
-Also from the source: prefer **photography** over illustration, keep the voice **objective**, use **few colors at full strength** (limited in number, bold in use; see Color in Part 2), use **simple geometric shapes** (rectangle, circle, rule) when a graphic element is needed.
+Also from the source: prefer **photography** over illustration (treated to the palette, see Step 8), keep the voice **objective**, use **color as large flat planes at full strength** (a ground, not an accent; see Color in Part 2), use **simple geometric shapes** (rectangle, circle, rule) when a graphic element is needed.
 
 ## 8. Build
 
 - Default output: one self-contained HTML file with inline CSS (start from the base CSS in Part 2), semantic HTML, `lang` and `dir` set. If the project uses a framework (React, Tailwind, Next.js), follow it and map the tokens into its config.
 - Fonts: Google Fonts with a system fallback (lists in Parts 2 and 3). Avoid the overused defaults (Inter, Poppins, Montserrat, Cairo, Tajawal) unless the project already uses them.
-- **Images when you have no photography.** Don't fill large areas with empty grey placeholder blocks — on screen they read as unfinished dead space and pull attention from the content. Prefer, in this order: (a) a typographic composition (giant word or number), (b) a flat geometric composition or a strong color field, (c) a placeholder only where a real photo is clearly needed — kept proportional to its role (not half the screen), on the grid, with an honest caption like "Photo: the open hall, 4:5". Never AI-style 3D blobs, abstract gradients, or stock illustrations of people with laptops.
+- **Images when you have no photography.** Don't fill large areas with empty grey placeholder blocks — on screen they read as unfinished dead space and pull attention from the content. Prefer, in this order: (a) a typographic composition (an equal-width lockup of real facts, or a giant word or number), (b) flat geometry: the product's own object drawn as repeated colored modules, or a strong color field with a halftone or duotone plane, (c) a placeholder only where a real photo is clearly needed — kept proportional to its role (not half the screen), on the grid, with an honest caption like "Photo: the open hall, 4:5". Never AI-style 3D blobs, abstract gradients, or stock illustrations of people with laptops. **A photo you do have is never shown in natural color:** make it a duotone, halftone or tint in the Look's palette (looks.md M3, M4).
 - Motion: minimal and functional — color/opacity transitions of 120–200ms; no parallax, no fade-up on every block, no hover scale.
-- Accessibility is part of the style: WCAG AA contrast, visible focus (thick outline in the signal color), real `<button>`/`<a>`, labeled inputs, `prefers-reduced-motion` respected.
+- Accessibility is part of the style: WCAG AA contrast, visible focus (a thick outline in the text color of the surface it sits on), real `<button>`/`<a>`, labeled inputs, `prefers-reduced-motion` respected.
 - Charts: if a dataviz skill is available, follow it for chart mechanics, but keep this skill's look where they conflict: **square bar ends** (no rounded caps), the series that matters in a strong palette color and the rest in grey/ink. A single huge hero number may use proportional figures; numbers in tables, axes and stat rows use tabular figures.
 
 ## 9. Review before delivering
 
-1. If a browser is available (Playwright/Chromium), render at 1440px and 390px and look at the screenshots. Judge the picture, not the code. (If Google Fonts can't be reached, preview with local copies, e.g. `npm i @fontsource/<font>`, while the delivered file still links Google Fonts.)
+1. If a browser is available (Playwright/Chromium), render at 1440px and 390px and look at the screenshots. Judge the picture, not the code. (If Google Fonts can't be reached, preview with local copies, e.g. `npm i @fontsource/<font>`, while the delivered file still links Google Fonts.) Then measure the color of the 1440px shot: `python3 -I scripts/color_power.py shot-1440.png` (add `--paper-ground` for Looks 2 and 5). If it says LOW, enlarge the ground plane or change the ground; adding accents won't fix it.
 2. Run the checklist in Part 5. Fix every failure.
 3. Concept test (step 3): could this page be moved to a competitor by changing the name? If yes, the concept isn't specific enough.
 4. Familiarity test (step 6): if it reads like a default design-system page, add or strengthen a signature move.
@@ -194,7 +221,7 @@ Base 8px. Steps: `4 · 8 · 16 · 24 · 32 · 48 · 64 · 96 · 128 · 192`. Ins
 **Editorial (landing pages):**
 | Token | Size | Notes |
 |---|---|---|
-| display | `clamp(56px, 11vw, 200px)` | One per page; w700–900; lh 0.9–1.0 (Arabic 1.1–1.25); tracking −0.02 to −0.04em (Latin only) |
+| display | `clamp(72px, 16vw, 320px)`, or an equal-width lockup (move 15) | One per page. w400–500 for an elegant giant word (Sun), w700–900 for heavy (bands, black ground); lh 0.8–1.0 (Arabic 1.1–1.25); tracking −0.04 to −0.07em (Latin only) |
 | h1 | `clamp(40px, 6vw, 96px)` | |
 | h2 | `clamp(28px, 3.2vw, 48px)` | |
 | lead | 20–24px | max 40ch |
@@ -212,40 +239,41 @@ The jump from display to lead should be 5× or more — that tension is what mak
 - Index numbers (01, 02, 03) in the meta size for lists and sections.
 - A headline may be wider than the screen and cropped by the edge — once per page.
 
-## Color — few colors, full strength
+## Color — power comes from planes
 
-Swiss color is **limited in number and bold in strength**. The booklet calls Keller's colors strong and describes the mature 1950s style as using limited colors. The cited sources say the same from both sides: sparing use of color (House of Switzerland), "unusual color combinations" (Smashing Magazine), "vibrant contrasting color" in Keller's work. The posters in the booklet show it: Keller's orange ground with deep red and green, Ballmer's blue and black, and red, black and grey; Müller-Brockmann's full orange cover, his black poster with a little red, and red, yellow and blue squares on near-white; Hofmann's red letters on white.
-
-So color is not a timid accent on a white page. It is **flat, saturated, and used in large planes**.
+The booklet calls Swiss color limited and strong. Five posters studied for this skill (sampled and measured; see `references/looks.md`) show what that means in practice: **color is the ground, not an accent.** Strong flat color or black covers 83–97% of three of them; the other two put one chromatic ink on white and fill a large panel with a pale analogous pair. A page that is cream with a colored button is timid, whatever its grid.
 
 **Rules**
-- **Palette = paper + ink + 1–3 strong flat colors.** Never more. No tints of everything, no pastel range, no gradients.
-- **Use color as structure.** A whole section, a full-height column, a large circle or the full background of the hero can be a solid color field. Large flat planes of strong color are Swiss. A page that is all white with one small colored button is timid, not Swiss.
-- **Give each color a job.** For example, the *field* color carries the composition (backgrounds, blocks, shapes), and the *signal* color marks action or state. If the field is red, the button on it is ink, not red.
-- **Contrast of hue and value, not of decoration.** Put colors next to each other as hard-edged planes: orange against black, blue against red, red against grey. Unusual pairings are allowed, and they are part of the tradition.
-- **Product UI is calmer.** Dashboards and apps keep large neutral working areas. Strong color goes to one poster moment (header, login, empty state), to navigation or section identity, and to data. It does not go behind dense tables.
-- **One color per meaning across the product.** If orange means "open orders", it never means anything else.
-- **A brand color joins the palette** as the field or signal color. Add at most one or two partners chosen for contrast with it.
+1. **Ground first.** At least 60% of the first screen is strong flat color or ink (Looks 1, 3, 4). The paper-ground Looks (2, 5) carry color in the ink and in a tinted or colored panel of at least 30% of the first screen. Measure it with `scripts/color_power.py`.
+2. **One scheme with a relationship**, not "a few nice colors": complementary (yellow ↔ indigo), analogous (violet + periwinkle + orchid), a primary set (blue, green, yellow, red) with black ink, a spectrum on black, or cream + pure hues with overprint. That is ground + ink + the scheme's hues: 2–4 hues for Looks 1, 2, 3, 5, and up to 9 for Look 4 (all in one repeated module).
+3. **Full strength.** Never mix a hue with grey or white and never fade it with opacity. A paler color is allowed only as the analogous partner of a saturated ink (periwinkle beside violet).
+4. **Every hue at least twice**, in different sizes or places. Used once it looks accidental; used twice it looks systematic.
+5. **One text color per surface**: ink, white, or the chromatic ink. Take the pair from the table below, not by eye.
+6. **Planes touch**: hard edges, no gaps, borders or shadows between them. Where two planes overlap, overprint (`mix-blend-mode: multiply`) so the overlap is a third color.
+7. **Controlled pictures**: duotone, halftone or tinted to the palette, or flat geometry; never natural color (Step 8).
+8. **One color, one meaning** across the product. A room, a status or a category keeps its hue everywhere. **Give each color a job:** the ground carries the composition; the *signal* color marks action and state (focus, errors, the current item) and is never the ground color. If the field is red, the button on it is ink, not red.
+9. **A brand color joins the palette** as the ground or a plane. Choose its partners by the scheme, not by taste.
+10. **Product UI is calmer.** Tables and forms keep a neutral working area. The Look's ground goes to the page header, navigation or section identity, the login or empty state, and to data and category coding. Strong color never sits behind dense tables.
 
-**Palettes drawn from the source posters** (starting points: pick one, then adjust; don't copy a poster):
+**Text on fields** (contrast computed against WCAG; body text needs 4.5:1, large text ≥24px or ≥19px bold needs 3:1):
 
-| Palette | Colors | Character |
+| Field | Text that passes | Doesn't pass |
 |---|---|---|
-| Keller — museum | orange `#F05A1A` · wine `#8E1B2E` · green `#1F6B4A` · ink | warm, bold, unusual |
-| Ballmer — building | blue `#0047BB` · ink · paper | cold, constructive |
-| Ballmer — office | red `#E30613` · ink · grey `#B9B7AE` | industrial, loud |
-| Müller-Brockmann — film | ink as the ground · paper type · warm grey `#8C8A80` · small red `#E30613` | dark, cinematic |
-| Müller-Brockmann — concert | near-white · red `#E30613` · yellow `#F2B705` · blue `#1E5AA8` · ink, all in small units | musical, rhythmic |
-| Müller-Brockmann — grid book | orange `#EE6B2F` field · paper hairlines · ink type | systematic, warm |
-| Hofmann — Basel | paper · ink · one red `#E30613` | austere, high contrast |
+| yellow `#FFC611` | ink `#0D0D0D` 12.3 · navy `#16154A` 10.8 · indigo `#3A3A9C` 5.9 | white 1.6 |
+| mustard `#EFB83E` | ink 10.7 | white 1.8 |
+| indigo `#3A3A9C` · navy `#16154A` | white 9.3 · 16.9; yellow on indigo 5.9 | |
+| blue `#2F7BFF` | ink 5.0 | white 3.9 (large only) |
+| deep blue `#1248B0` | white 8.1 | ink 2.4 |
+| green `#0FA23A` | ink 5.8 | white 3.4 (large only) |
+| deep green `#097F28` | white 5.2 | ink 3.8 (large only) |
+| red `#E6040A` | white 4.8 | ink 4.1 (large only) |
+| violet ink `#4F2A7D` | on white 10.7 · on periwinkle `#CFDBF1` 7.7 | on orchid `#BD9CBB` 4.4 (large only) |
+| black `#0B0B0B` | white 19.7; spectrum fields take ink (4.6–16), royal `#3744C6` takes white 7.5 | royal as a field against black 2.6: decoration only |
+| cream `#EFEBDD` | ink 16.3 · purple `#6B126D` 9.1 | |
 
-**Text on color fields** (contrast on paper `#F4F2EC` / ink `#111111`, checked against WCAG):
-- Orange, yellow, light grey, pink fields → **ink text** (orange `#F05A1A`: ink 5.6:1, paper only 3.0:1).
-- Blue, green, wine, deep red fields → **paper text** (blue `#0047BB`: paper 7.2:1).
-- Swiss red `#E30613`: paper text 4.4:1 passes only for **large/bold text** (≥24px, or ≥19px bold). For body text on red use deep red `#C8102E` (paper 5.3:1) or put the text in an ink or paper block on the red field.
-- Body text always needs 4.5:1, large display text 3:1. Check every pairing; strong color is no excuse for unreadable text.
+The studied posters set white on yellow and black on deep blue. Both fail as UI text, so translate them: navy or indigo on yellow, white on deep blue (or use the lighter blue that takes ink). For the older booklet palettes: orange `#F05A1A` takes ink (5.6:1; cream paper `#F4F2EC` only 3.0:1); red `#E30613` takes white (4.9:1) but cream paper only for large text (4.4:1); deep red `#C8102E` takes white (5.9:1) and cream paper (5.3:1). Check every pairing you add.
 
-**Still not allowed:** gradients as color effects, glass, glows, colored shadows, opacity washes as decoration, neon on dark. Technical patterns are fine (e.g. `repeating-linear-gradient` hatching for unavailable slots). Neutral subtle shadows only where the platform needs elevation (menus, dialogs). A dark theme uses ink as the ground with the same strong palette.
+**Still not allowed:** gradients as color effects, glass, glows, colored shadows, opacity washes as decoration, neon on dark. Allowed print finishes: halftone and duotone as picture treatments, and grain of at most 10% on flat fields in a poster moment (looks.md M9). Technical patterns are fine too (e.g. `repeating-linear-gradient` hatching for unavailable slots). Neutral subtle shadows only where the platform needs elevation (menus, dialogs). A dark theme is black as the ground with the same full-strength hues (Look 4): flat, no glow.
 
 ## Layout recipes (12 columns; mirror automatically in RTL)
 
@@ -261,40 +289,50 @@ So color is not a timid accent on a white page. It is **flat, saturated, and use
 
 ## Base CSS (copy in and adjust)
 
+The values are Look 1 (Sun). **Replace the colors with the Look you chose** (`references/looks.md`); don't keep a cream page by default.
+
 ```css
 :root{
-  --paper:#f4f2ec; --ink:#111; --ink-2:#555; --rule:#d9d9d6;
-  --field:#f05a1a;   /* main strong color: whole sections, blocks, shapes */
-  --field-2:#1f6b4a; /* optional second strong color */
-  --signal:#e30613;  /* action / state; use ink for buttons that sit on a red field */
+  --ground:#ffc611;     /* page ground: a strong color or ink, never cream-by-default */
+  --on-ground:#16154a;  /* the one text color on the ground */
+  --c:#3a3a9c;          /* second plane: complement, band, or module hue */
+  --c-text:#fff;        /* the one text color on --c */
+  --signal:var(--c);    /* action and state: focus, errors, current item; must contrast with the surface it sits on */
+  --paper:#fff; --ink:#16154a; --rule:#16154a;   /* neutral working areas in product UI */
   --font:"Schibsted Grotesk","Helvetica Neue",Helvetica,Arial,sans-serif;
   /* Arabic: "IBM Plex Sans Arabic","IBM Plex Sans",system-ui,sans-serif */
   --s-1:4px;--s-2:8px;--s-3:16px;--s-4:24px;--s-5:32px;--s-6:48px;--s-7:64px;--s-8:96px;--s-9:128px;--s-10:192px;
   --cols:12; --gutter:24px; --margin:clamp(20px,5vw,80px);
   --t-meta:13px; --t-base:17px; --t-lead:clamp(19px,1.6vw,24px);
-  --t-h2:clamp(28px,3.2vw,48px); --t-h1:clamp(40px,6vw,96px); --t-display:clamp(56px,11vw,200px);
-  --lh-body:1.55; --lh-head:1.05; --lh-display:.92;
+  --t-h2:clamp(28px,3.2vw,48px); --t-h1:clamp(40px,6vw,96px); --t-display:clamp(72px,16vw,320px);
+  --lh-body:1.55; --lh-head:1.05; --lh-display:.85;
 }
 :lang(ar){--lh-body:1.8;--lh-head:1.3;--lh-display:1.15}
 @media (max-width:1199px){:root{--cols:8;--gutter:20px}}
 @media (max-width:767px){:root{--cols:4;--gutter:16px}}
 *,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);
+body{margin:0;background:var(--ground);color:var(--on-ground);font-family:var(--font);
   font-size:var(--t-base);line-height:var(--lh-body);text-align:start;-webkit-font-smoothing:antialiased}
 h1,h2,h3,p{margin:0}
 .grid{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));column-gap:var(--gutter);padding-inline:var(--margin)}
-.display{font-size:var(--t-display);line-height:var(--lh-display);font-weight:800;letter-spacing:-.035em}
+.plane{background:var(--c);color:var(--c-text);--focus:var(--c-text)}   /* a second strong plane */
+.neutral{background:var(--paper);color:var(--ink)}              /* tables, forms, dense product areas */
+.display{font-size:var(--t-display);line-height:var(--lh-display);font-weight:800;letter-spacing:-.05em}
 .h1{font-size:var(--t-h1);line-height:var(--lh-head);font-weight:700;letter-spacing:-.02em}
 .h2{font-size:var(--t-h2);line-height:1.12;font-weight:700}
 .lead{font-size:var(--t-lead);line-height:1.4;max-width:40ch}
-.meta{font-size:var(--t-meta);line-height:1.4;font-weight:500;color:var(--ink-2)}
+.meta{font-size:var(--t-meta);line-height:1.4;font-weight:500}   /* hierarchy by size and weight, not by color */
 .num{font-variant-numeric:tabular-nums}
-:lang(ar) :is(.display,.h1,.h2,.meta){letter-spacing:0;text-transform:none}
-.rule{border:0;border-block-start:1px solid var(--rule)} .rule-heavy{border-block-start:6px solid var(--ink)}
-.btn{display:inline-block;padding:14px 24px;background:var(--ink);color:var(--paper);font:inherit;font-weight:700;
-  border:0;border-radius:0;text-decoration:none;cursor:pointer;transition:background-color .15s}
-.btn:hover{background:var(--signal)}
-:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+.fit>span{display:block;width:fit-content;white-space:nowrap;line-height:.82;font-size:clamp(40px,12vw,220px)}
+.fit>span+span{margin-top:.3em}                                  /* + the fit() script, looks.md M1 */
+/* a section holding a lockup gets overflow:clip (tall Arabic font metrics would extend the scroll area) */
+:lang(ar) :is(.display,.h1,.h2,.meta,.fit){letter-spacing:0;text-transform:none}
+:lang(ar) .fit>span{line-height:1.15}
+.rule{border:0;border-block-start:1px solid currentColor} .rule-heavy{border-block-start:6px solid currentColor}
+.btn{display:inline-block;padding:14px 24px;background:var(--on-ground);color:var(--ground);font:inherit;font-weight:700;
+  border:0;border-radius:0;text-decoration:none;cursor:pointer;transition:background-color .15s,color .15s}
+.btn:hover{background:var(--c);color:var(--c-text)}
+:focus-visible{outline:3px solid var(--focus,var(--on-ground));outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 ```
 
@@ -335,7 +373,7 @@ Avoid **Cairo** and **Tajawal** as defaults — the Arabic equivalent of Inter. 
 - One numeral system per product: Western digits (common in Saudi digital products) or Arabic-Indic digits for formal/editorial. Don't mix on one screen. Tabular figures in tables.
 - Separators: a comma with Western digits (1,284) or the Arabic thousands separator with Arabic-Indic digits. Use the Arabic comma, semicolon and question mark, and guillemets for quotes.
 - Dates: day, Arabic month name, year (e.g. 11 November 2026, written in Arabic); Hijri if the context needs it — consistently.
-- Currency: the number followed by the Arabic abbreviation or word for riyal; wrap Latin fragments, phone numbers, emails, URLs and IBANs in `<bdi>` or `dir="ltr"` so order doesn't break. LTR inputs (email, phone) get `dir="ltr"`.
+- Currency: the number followed by the Arabic abbreviation or word for riyal; wrap Latin fragments, phone numbers, emails, URLs, IBANs and **time ranges** in `<bdi>` or `dir="ltr"` so order doesn't break (tested: `06:00–23:00` inside an RTL block is displayed as 23:00–06:00 without it). A display line that is entirely Latin or numeric takes `dir="ltr"` on its own `<span>`; it stays right-aligned in the RTL block. LTR inputs (email, phone) get `dir="ltr"`.
 - Bilingual layouts: give each language its own columns and its own start edge (Arabic flush right, English flush left) instead of centering both — a strong Swiss composition in itself.
 
 **Copy**: short, objective, concrete simplified Modern Standard Arabic; no English-calqued phrasing and no filler (the Arabic equivalents of "discover the power of", "elevate your experience", "innovative solutions"). If the `ux-araby` skill is available, use it for microcopy.
@@ -348,7 +386,8 @@ Same rules everywhere: on the grid, flush-start, square, hierarchy by type, sepa
 
 - **Navigation** — wordmark (product name in the main font, bold) at the start edge; plain text links on grid columns, not a centered pill bar; current page by weight 700 **or** a 2px rule **or** the signal color (pick one). Mobile: a text button "Menu" (in the interface language) opening a full-screen list of large, numbered links.
 - **Buttons** — rectangle, radius 0–2px, ink or signal fill, weight 600–700, one primary per view. Secondary: text link with arrow (→ LTR, ← RTL) or 1px outline. Hover: color swap or underline, no scale or shadow. Labels say what happens: "Book an appointment", "Download the report (PDF, 2.4 MB)".
-- **Hero** — offset headline, split with photo, giant word, color field, or a data hero with one large number ("2,418 beneficiaries"). Never the centered default.
+- **Hero** — a full-bleed ground (Looks 1, 3, 4, 5), offset headline, split with a treated photo, an equal-width lockup of facts, or a data hero with one large number ("2,418 beneficiaries"). Never the centered default.
+- **Section bands** — sections as full-bleed bands in the Look's hues (Look 3), each holding one equal-width line; the band's height follows the word. Use bands to change section, not cards.
 - **Lists instead of cards** — rows with 1px rules; columns: index · title · description · meta/link; the whole row clickable with a color or arrow change on hover. Visual item grids (products, people): image + caption cells sharing top lines, no boxes, no shadows.
 - **Tables** — header in the meta size w600 with a 1–2px ink rule; body rows 1px rules; no zebra, no vertical borders; numbers tabular and end-aligned, text start-aligned; row height 48–56px (36–40 dense).
 - **Forms** — labels above, flush-start; inputs with a 1px border (radius ≤2px, height 48px) or bottom border only — one style; focus → 2px signal border; errors as text in the signal color with a clear message ("Mobile number must start with 05"); fields on the grid; submit aligned to the field start edge.
@@ -356,7 +395,7 @@ Same rules everywhere: on the grid, flush-start, square, hierarchy by type, sepa
 - **Quotes** — one quote, large, flush-start, name and role in the meta size. No avatar carousel, no stars.
 - **Pricing** — a comparison table, or columns divided by rules; the recommended plan marked by its name or top rule in the signal color. No scaled middle card, no ribbon.
 - **Footer** — on the same grid; wordmark + one line on 1–4, link groups on unequal spans, legal line in the meta size; a full ink block closes a page well. Social links as words.
-- **Dashboards** — sidebar as a numbered text list; large flush-start page title; filters as text controls in the meta row; KPIs as a stat strip, not colored cards; charts with one highlighted series, thin axes, direct labels; tables for detail.
+- **Dashboards** — sidebar as a numbered text list; large flush-start page title; filters as text controls in the meta row; KPIs as a stat strip, not colored cards; charts with one highlighted series, thin axes, direct labels; tables for detail. Hues from the Look code the categories in the legend, navigation and chart series, one hue per meaning, while tables stay on the neutral area.
 - **Mobile app screens** — large flush-start title (28–34px bold); list rows with hairlines and meta at the end edge; tab bar with text labels (simple icons optional), active tab by ink + weight, no pill; primary action as a full-width rectangle at the bottom; sheets with square corners and a rule under the title.
 - **Empty states and feedback** — a short sentence on what's missing plus one button (no sad-box illustration); alerts as a rectangle with a 4px start-edge bar in the signal color; loading as a thin progress rule or grid-matching skeleton blocks.
 
@@ -374,20 +413,22 @@ Generated UIs average many templates and land at the statistical middle: centere
 | Layout | Equal ⅓/¼ columns, same 24px gap everywhere | Unequal spans; spacing contrast |
 | Layout | Bento grid of rounded tiles | Modular grid with shared edges and rules |
 | Layout | 3 pricing cards, middle one scaled, "Most popular" | Comparison table |
-| Surface | Purple/indigo gradients, gradient text, mesh blobs, glows | Paper + ink + 1–3 strong flat colors used as planes |
-| Color | Pastel rainbow of tints, or an all-white page with one small accent button | Few colors at full strength, used as large fields |
+| Surface | Purple/indigo gradients, gradient text, mesh blobs, glows | A Look: a strong ground and one scheme of full-strength flat hues used as planes |
+| Color | Pastel rainbow of tints; an all-white or cream page with one small accent button or block | A Look: strong ground over 60% of the first screen, full-strength hues (Part 2) |
+| Color | A handful of unrelated "nice" hues, each used once | One scheme with a relationship; every hue at least twice |
 | Surface | Glassmorphism, backdrop blur | Solid surfaces |
 | Surface | `rounded-2xl` + soft shadow on everything | Radius 0–2px; separation by white space and rules |
-| Surface | Neon dark mode by default | Light paper by default |
-| Surface | Dot patterns, noise, floating shapes | Remove; geometry only if it carries the composition |
+| Surface | Neon or glowing dark mode | A flat black or strong-color ground with full-strength hues, no glow (Look 4) |
+| Surface | Decorative dot patterns, noise, floating shapes | Remove; geometry only if it carries the composition. Halftone as a picture treatment and ≤10% grain on flat fields are print craft (looks.md M3, M9) |
 | Surface | Large empty grey placeholder blocks | Typographic or geometric composition; small captioned placeholder only where a photo is needed |
 | Motion | Hover scale + bigger shadow; fade-up on every block | Color/underline change; no scroll animation |
 | Type | Inter/Poppins/Montserrat (Cairo/Tajawal in Arabic) | A grotesque with character |
-| Type | All headlines ≈40–48px, timid scale | One dramatically large display size |
+| Type | All headlines ≈40–48px, timid scale | One dramatically large display size, or an equal-width lockup |
 | Type | Centered or justified paragraphs | Flush-start, ragged-end |
 | Type | Color for hierarchy; purple highlighted words | Size, weight, position; color only with a meaning |
 | Icons | Emoji as icons; an icon on every line | Words, numbers, or simple geometric marks |
 | Images | 3D renders, AI art, "people with laptops" | Real photography cropped to the grid, or flat geometry |
+| Images | A natural-color stock photo placed as is | Duotone, halftone or tint in the palette (looks.md M3, M4) |
 | Proof | Avatar circles + 5 stars; invented logo cloud | One real quote set large, or nothing |
 | Copy | "Unlock, Elevate, Seamless, Supercharge, All-in-one", and their Arabic equivalents ("discover the power of", "innovative solutions", "seamless experience", "integrated platform", "a qualitative leap") | Plain: what it does, for whom, how much, when |
 | Copy | Round fake stats "10,000+ users", "99.9% uptime" | Specific numbers with context ("1,284 orders this week"), or none |
@@ -405,7 +446,7 @@ Generated UIs average many templates and land at the statistical middle: centere
 - [ ] Every edge on a column line; every gap from the spacing scale.
 - [ ] Flush-start text; no centered paragraphs, no justified body.
 - [ ] One family (or Arabic + Latin pair), max three weights.
-- [ ] Paper, ink and 1–3 strong flat colors used as planes, each with one job; text on every field passes contrast; no gradient effects, glass or glows; corners ≤2px; no decorative shadows.
+- [ ] A Look was chosen and applied: strong ground over 60% of the first screen (or a chromatic ink plus a tinted panel of 30%+), `scripts/color_power.py` passes, one scheme, every hue used at least twice, one text color per field with each pair contrast-checked, photos duotone/halftone/tinted; no gradient effects, glass or glows; corners ≤2px; no decorative shadows.
 - [ ] No emoji icons, invented logos, fake testimonials, hype words or dead placeholder areas.
 - [ ] Content specific, in the right language; assumptions listed for the user.
 - [ ] Mobile keeps asymmetry and hierarchy, with no horizontal overflow.
@@ -444,7 +485,8 @@ Condensed from the booklet *The Swiss School of Design*. Use it to justify a dec
 - *Print Magazine*: core values cleanliness, readability, objectivity; content over decoration; grids can combine with ratios (thirds, golden section); Akzidenz-Grotesk (1896), Univers (1954/57, one of the first full type families), Helvetica (1957); Keller taught that design adapts to content; Hofmann and Ruder founded the Basel school (1947); Max Bill and Otl Aicher's Ulm school added semiotics.
 - *Aristova & Vasilieva, flat design and the International Style*: flat web design inherits the style's universalism, clarity, modular grid, white backgrounds, geometric elements and large images, and warns that its spread **makes sites uniform and weakens their identity**.
 - *Hofmann, Graphic Design Manual*: the dot, the line, confrontation (meetings of unlike elements such as form and lettering), letters and signs; the Basel method isolates the message's essence before any surface style.
-- *Color across the sources*: the booklet credits Keller with strong colors and the 1950s style with limited colors; House of Switzerland notes sparing use of color; Smashing Magazine notes unusual color combinations; course notes on Keller's Rietberg poster note vibrant contrasting color. Together: **few colors, at full strength, as flat planes**.
+- *Color across the sources*: the booklet credits Keller with strong colors and the 1950s style with limited colors; House of Switzerland notes sparing use of color; Smashing Magazine notes unusual color combinations; course notes on Keller's Rietberg poster note vibrant contrasting color. Together: **a limited, related set of colors, at full strength, as flat planes**; "limited" describes the scheme, not a ceiling of three.
+- *Contemporary Swiss-style posters studied for the Looks* (an author poster in yellow and indigo; the magazine *form* no. 271; an "International Typographic Style" poster in four color bands; a Vignelli poster of stacked colored modules on black; the Swissted collection): color is the ground (83–97% of the sheet in three of five) or a single chromatic ink on white; every hue repeats; type is one color per surface; pictures are duotone, halftone, tinted or flat geometry; scale jumps from 12px to 300px with nothing in between. Measurements and tested CSS: `references/looks.md`.
 - Swiss poster history: Zurich = Concrete Art, Basel = New Objectivity (Swiss National Library); the Basel **object poster** (Sachplakat) shows one object larger than life; Herbert Matter's **photomontage** posters of the 1930s.
 
 Sources cited by the booklet: Hollis, *Swiss Graphic Design* (2001); Meggs, *A History of Graphic Design* (1998); Müller-Brockmann, *Grid Systems in Graphic Design* (1981); Vasileva, "The Swiss Style: Its Prototypes, Origins and the Regulation Problem" (*Terra Artis*, 2021); Hitchcock & Johnson, *The International Style* (1932); MoMA collection pages. Further reading used here: Hofmann, *Graphic Design Manual* (1965); Aristova & Vasilieva, flat design and the International Style (Kazan Federal University repository); Smashing Magazine (2009); Print Magazine; neugraphic.com excerpt of *Grid Systems*.
