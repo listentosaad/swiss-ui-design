@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: arabic-coworking-landing
+expected_outcome: |
+  A single RTL Arabic HTML landing page built on a modular grid with asymmetric, flush-right composition, a concept drawn from the content (not a generic CTA verb), a poster layer of at least three signature moves, few strong flat colors used as planes, no AI-template tells, and realistic Arabic content.
